@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.settings {
+    background-color: #fff;
+    padding: 2rem 0;
+    margin: 2rem 0;
+}
+
+.settings h2 {
+    text-align: center;
+    color: #007BFF;
+    margin-bottom: 1.5rem;
+}
+
+.settings form {
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.btn-save {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-save:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content p {
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links li a:hover {
+    color: #007BFF;
+}
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="admin.html">JobConnect Rajasthan - Admin</a></h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="manageListings.html">Manage Listings</a></li>
+                    <li><a href="manageUsers.html">Manage Users</a></li>
+                    <li><a href="manageContent.html">Manage Content</a></li>
+                    <li><a href="setting.html">Settings</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="settings">
+        <div class="container">
+            <h2>Settings</h2>
+            <form id="settings-form">
+                <div class="form-group">
+                    <label for="site-name">Site Name:</label>
+                    <input type="text" id="site-name" name="site_name" placeholder="Enter site name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Contact Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter contact email" required>
+                </div>
+                <div class="form-group">
+                    <label for="timezone">Time Zone:</label>
+                    <select id="timezone" name="timezone" required>
+                        <option value="UTC">UTC</option>
+                        <option value="GMT">GMT</option>
+                        <option value="IST">IST</option>
+                        <!-- Add more time zones as needed -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="notifications">Email Notifications:</label>
+                    <input type="checkbox" id="notifications" name="notifications">
+                </div>
+                <div class="form-group">
+                    <label for="maintenance-mode">Maintenance Mode:</label>
+                    <input type="checkbox" id="maintenance-mode" name="maintenance_mode">
+                </div>
+                <button type="submit" class="btn btn-save">Save Settings</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 JobConnect Rajasthan. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // script.js
+
+// Handle form submission
+document.getElementById('settings-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Gather form data
+    const formData = new FormData(event.target);
+    
+    // Convert to object for processing
+    const settings = {};
+    formData.forEach((value, key) => {
+        settings[key] = value;
+    });
+    
+    // Process form data (e.g., send to server)
+    console.log('Settings:', settings);
+    
+    // Display success message
+    alert('Settings have been saved successfully.');
+    // Alternatively, you can provide more detailed feedback or redirect the user
+});
+
+    </script>
+</body>
+</html>

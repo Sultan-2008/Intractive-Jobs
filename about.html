@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counseling & Resources</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.resources {
+    background-color: #fff;
+    padding: 2rem 0;
+    margin: 2rem 0;
+}
+
+.resources h2 {
+    text-align: center;
+    color: #007BFF;
+    margin-bottom: 2rem;
+}
+
+.resource-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.resource-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: box-shadow 0.3s;
+}
+
+.resource-card:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resource-card h3 {
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.resource-card p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.resource-card button {
+    padding: 0.5rem 1rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.resource-card button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content p {
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links li a:hover {
+    color: #007BFF;
+}
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="admin.html">JobConnect Rajasthan</a></h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                    <li><a href="internships.html">Internships</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="resources">
+        <div class="container">
+            <h2>Counseling & Resources</h2>
+            <div class="resource-cards">
+                <div class="resource-card">
+                    <h3>Career Guidance</h3>
+                    <p>Access personalized career guidance from industry experts to help you navigate your career path.</p>
+                    <button onclick="openResource('career-guidance')">Learn More</button>
+                </div>
+                <div class="resource-card">
+                    <h3>Resume Building</h3>
+                    <p>Use our tools to create a professional resume that stands out to employers.</p>
+                    <button onclick="openResource('resume-building')">Build Your Resume</button>
+                </div>
+                <div class="resource-card">
+                    <h3>Interview Tips</h3>
+                    <p>Get expert advice on how to prepare for interviews and impress potential employers.</p>
+                    <button onclick="openResource('interview-tips')">Get Tips</button>
+                </div>
+                <div class="resource-card">
+                    <h3>Mentorship Pairing</h3>
+                    <p>Pair with experienced professionals for mentorship and guidance throughout your career journey.</p>
+                    <button onclick="openResource('mentorship-pairing')">Find a Mentor</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 JobConnect Rajasthan. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // script.js
+
+// Function to handle resource card button clicks
+function openResource(resourceName) {
+    switch(resourceName) {
+        case 'career-guidance':
+            alert('Career Guidance page will be available soon.');
+            break;
+        case 'resume-building':
+            alert('Resume Building tool will be available soon.');
+            break;
+        case 'interview-tips':
+            alert('Interview Tips will be available soon.');
+            break;
+        case 'mentorship-pairing':
+            alert('Mentorship Pairing will be available soon.');
+            break;
+        default:
+            alert('Resource not found.');
+    }
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Details - JobPortal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <!-- <div class="logo">
+            <h1><a href="index.html">JobPortal</a></h1>
+        </div> -->
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="find-jobs.html">Find Jobs</a></li>
+                <li><a href="find-internships.html">Find Internships</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="btn btn-login">Login</a>
+            <a href="register.html" class="btn btn-register">Register</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 id="internship-title">Internship Title</h2>
+            <p><strong>Location:</strong> <span id="internship-location">Location</span></p>
+            <p><strong>Industry:</strong> <span id="internship-industry">Industry</span></p>
+            <p id="internship-description">Internship Description</p>
+            <a href="apply.html" class="btn btn-primary">Apply Now</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 JobPortal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample Data: This would typically come from a backend API
+const internshipData = [
+    {
+        id: 1,
+        title: "Software Development Intern",
+        location: "Jaipur",
+        industry: "IT",
+        description: "Assist in the development of software applications and tools."
+    },
+    {
+        id: 2,
+        title: "Marketing Intern",
+        location: "Udaipur",
+        industry: "Marketing",
+        description: "Support marketing campaigns and social media management."
+    },
+    // Add more internship entries as needed
+];
+
+// Function to display internships
+function displayInternships() {
+    const internshipsContainer = document.getElementById('internships-container');
+    internshipsContainer.innerHTML = '';
+
+    internshipData.forEach(internship => {
+        const internshipElement = document.createElement('div');
+        internshipElement.classList.add('internship-item');
+        internshipElement.innerHTML = `
+            <h3><a href="internship-details.html?id=${internship.id}">${internship.title}</a></h3>
+            <p><strong>Location:</strong> ${internship.location}</p>
+            <p><strong>Industry:</strong> ${internship.industry}</p>
+            <p>${internship.description}</p>
+        `;
+        internshipsContainer.appendChild(internshipElement);
+    });
+}
+
+// Function to display internship details
+function displayInternshipDetails() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const internshipId = parseInt(urlParams.get('id'));
+
+    const internship = internshipData.find(internship => internship.id === internshipId);
+
+    if (internship) {
+        document.getElementById('internship-title').textContent = internship.title;
+        document.getElementById('internship-location').textContent = internship.location;
+        document.getElementById('internship-industry').textContent = internship.industry;
+        document.getElementById('internship-description').textContent = internship.description;
+    } else {
+        document.getElementById('internship-title').textContent = 'Internship not found';
+    }
+}
+
+// Call the appropriate function based on the current page
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.endsWith('internships.html')) {
+        displayInternships();
+    } else if (window.location.pathname.endsWith('internship-details.html')) {
+        displayInternshipDetails();
+    }
+});
+
+    </script>
+</body>
+</html>

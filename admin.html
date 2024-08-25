@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.admin-dashboard {
+    background-color: #fff;
+    padding: 2rem 0;
+    margin: 2rem 0;
+}
+
+.admin-dashboard h2 {
+    text-align: center;
+    color: #007BFF;
+    margin-bottom: 2rem;
+}
+
+.admin-section {
+    display: none;
+    margin-bottom: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.actions button {
+    padding: 0.5rem 1rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.actions button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content p {
+    margin-bottom: 1rem;
+}
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">JobConnect Admin</a></h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="dashboard.html" id="dashboard">Dashboard</a></li>
+                    <li><a href="manageListings.html" id="listings">Manage Listings</a></li>
+                    <li><a href="manageUsers.html" id="users">Manage Users</a></li>
+                    <li><a href="manageContent.html" id="content">Manage Content</a></li>
+                    <li><a href="setting.html" id="settings">Settings</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="admin-dashboard">
+        <div class="container">
+            <h2>Admin Dashboard</h2>
+            <div id="dashboard-content">
+                <p>Welcome to the admin dashboard. Use the navigation menu to manage the platform.</p>
+            </div>
+
+            <div id="listings-content" class="admin-section">
+                <h3>Manage Job Listings</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Job listings will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="users-content" class="admin-section">
+                <h3>Manage Users</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- User data will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="content-content" class="admin-section">
+                <h3>Manage Platform Content</h3>
+                <p>Use the tools below to update platform content such as job resources, FAQs, and guidelines.</p>
+                <button>Edit Content</button>
+            </div>
+
+            <div id="settings-content" class="admin-section">
+                <h3>Settings</h3>
+                <p>Configure platform settings such as roles, permissions, and notifications.</p>
+                <button>Manage Settings</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 JobConnect Admin Dashboard. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script >
+        // script.js
+
+// Sample Data: This would typically come from a backend API or database
+const jobListings = [
+    {
+        jobTitle: "Software Engineer",
+        company: "Tech Solutions Pvt Ltd",
+        status: "Open"
+    },
+    {
+        jobTitle: "Mechanical Engineer Intern",
+        company: "ABC Manufacturing",
+        status: "Closed"
+    }
+];
+
+const users = [
+    {
+        userName: "John Doe",
+        email: "johndoe@example.com",
+        role: "Admin"
+    },
+    {
+        userName: "Jane Smith",
+        email: "janesmith@example.com",
+        role: "User"
+    }
+];
+
+// Function to populate the job listings table
+function populateJobListings() {
+    const tbody = document.querySelector('#listings-content tbody');
+    tbody.innerHTML = '';
+
+    jobListings.forEach(listing => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${listing.jobTitle}</td>
+            <td>${listing.company}</td>
+            <td>${listing.status}</td>
+            <td class="actions">
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        `;
+
+        tbody.appendChild(row);
+    });
+}
+
+// Function to populate the users table
+function populateUsers() {
+    const tbody = document.querySelector('#users-content tbody');
+    tbody.innerHTML = '';
+
+    users.forEach(user => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${user.userName}</td>
+            <td>${user.email}</td>
+            <td>${user.role}</td>
+            <td class="actions">
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        `;
+
+        tbody.appendChild(row);
+    });
+}
+
+// Handle section visibility
+document.querySelectorAll('.nav ul li a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Hide all sections
+        document.querySelectorAll('.admin-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show selected section
+        const sectionId = this.id + '-content';
+        document.getElementById(sectionId).style.display = 'block';
+    });
+});
+
+// Initial page load actions
+document.addEventListener('DOMContentLoaded', function() {
+    populateJobListings();
+    populateUsers();
+    document.getElementById('dashboard-content').style.display = 'block';
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details - JobPortal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <!-- <div class="logo">
+            <h1><a href="index.html">JobPortal</a></h1>
+        </div> -->
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="find-jobs.html">Find Jobs</a></li>
+                <li><a href="find-internships.html">Find Internships</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="btn btn-login">Login</a>
+            <a href="register.html" class="btn btn-register">Register</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 id="job-title">Job Title</h2>
+            <p><strong>Type:</strong> <span id="job-type">Job Type</span></p>
+            <p><strong>Location:</strong> <span id="job-location">Location</span></p>
+            <p><strong>Industry:</strong> <span id="job-industry">Industry</span></p>
+            <p id="job-description">Job Description</p>
+            <a href="apply.html" class="btn btn-primary">Apply Now</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 JobPortal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script >
+        // Sample Data: This would typically come from a backend API
+const jobData = [
+    {
+        id: 1,
+        title: "Software Engineer",
+        type: "full-time",
+        location: "Jaipur",
+        industry: "IT",
+        description: "Develop and maintain web applications using modern frameworks."
+    },
+    {
+        id: 2,
+        title: "Mechanical Engineer Intern",
+        type: "internship",
+        location: "Udaipur",
+        industry: "Engineering",
+        description: "Assist in the design and testing of mechanical systems."
+    },
+    // Add more job entries as needed
+];
+
+// Function to display jobs
+function displayJobs() {
+    const jobsContainer = document.getElementById('jobs-container');
+    jobsContainer.innerHTML = '';
+
+    jobData.forEach(job => {
+        const jobElement = document.createElement('div');
+        jobElement.classList.add('job-item');
+        jobElement.innerHTML = `
+            <h3><a href="job-details.html?id=${job.id}">${job.title}</a></h3>
+            <p><strong>Type:</strong> ${job.type}</p>
+            <p><strong>Location:</strong> ${job.location}</p>
+            <p><strong>Industry:</strong> ${job.industry}</p>
+            <p>${job.description}</p>
+        `;
+        jobsContainer.appendChild(jobElement);
+    });
+}
+
+// Function to display job details
+function displayJobDetails() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const jobId = parseInt(urlParams.get('id'));
+
+    const job = jobData.find(job => job.id === jobId);
+
+    if (job) {
+        document.getElementById('job-title').textContent = job.title;
+        document.getElementById('job-type').textContent = job.type;
+        document.getElementById('job-location').textContent = job.location;
+        document.getElementById('job-industry').textContent = job.industry;
+        document.getElementById('job-description').textContent = job.description;
+    } else {
+        document.getElementById('job-title').textContent = 'Job not found';
+    }
+}
+
+// Call the appropriate function based on the current page
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.endsWith('jobs.html')) {
+        displayJobs();
+    } else if (window.location.pathname.endsWith('job-details.html')) {
+        displayJobDetails();
+    }
+});
+
+    </script>
+</body>
+</html>

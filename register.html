@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - JobConnect Rajasthan</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.register {
+    background-color: #fff;
+    padding: 2rem 0;
+    margin: 2rem 0;
+}
+
+.register h2 {
+    text-align: center;
+    color: #007BFF;
+    margin-bottom: 1.5rem;
+}
+
+.register form {
+    max-width: 400px;
+    margin: auto;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #d9534f;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-link a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content p {
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links li a:hover {
+    color: #007BFF;
+}
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">JobConnect Rajasthan</a></h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="register">
+        <div class="container">
+            <h2>Register</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <p class="error-message" id="error-message"></p>
+                <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 JobConnect Rajasthan. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // script.js
+
+document.getElementById('register-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Retrieve form data
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const confirmPassword = document.getElementById('confirm-password').value.trim();
+    const errorMessage = document.getElementById('error-message');
+
+    // Clear any previous error messages
+    errorMessage.textContent = '';
+
+    // Basic client-side validation
+    if (username === '' || email === '' || password === '' || confirmPassword === '') {
+        errorMessage.textContent = 'Please fill in all fields.';
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        errorMessage.textContent = 'Passwords do not match.';
+        return;
+    }
+
+    // Simulate registration process (replace this with actual registration logic)
+    if (username === 'admin') { // Simulated username check
+        errorMessage.textContent = 'Username already exists.';
+    } else {
+        // Redirect to login or another page after successful registration
+        window.location.href = 'login.html'; // Replace with the actual URL of your login page
+    }
+});
+
+    </script>
+</body>
+</html>

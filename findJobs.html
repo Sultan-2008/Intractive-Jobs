@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Jobs - JobPortal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <!-- <div class="logo">
+            <h1><a href="index.html">JobPortal</a></h1>
+        </div> -->
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="findJobs.html">Find Jobs</a></li>
+                <li><a href="internships.html">Internships</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="btn btn-login">Login</a>
+            <a href="register.html" class="btn btn-register">Register</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2>Find Jobs</h2>
+            <p>Search for the latest job opportunities here.</p>
+            <div id="jobs-container">
+                <!-- Job listings will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 JobPortal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script >
+        // Sample Data: This would typically come from a backend API
+const jobData = [
+    {
+        title: "Software Engineer",
+        type: "full-time",
+        location: "Jaipur",
+        industry: "IT",
+        description: "Develop and maintain web applications using modern frameworks."
+    },
+    {
+        title: "Mechanical Engineer Intern",
+        type: "internship",
+        location: "Udaipur",
+        industry: "Engineering",
+        description: "Assist in the design and testing of mechanical systems."
+    },
+    {
+        title: "Financial Analyst",
+        type: "full-time",
+        location: "Jodhpur",
+        industry: "Finance",
+        description: "Analyze financial data to support business decisions."
+    },
+    {
+        title: "Frontend Developer",
+        type: "part-time",
+        location: "Jaipur",
+        industry: "IT",
+        description: "Build and optimize user interfaces for various web projects."
+    }
+];
+
+// Function to display jobs
+function displayJobs() {
+    const jobsContainer = document.getElementById('jobs-container');
+    jobsContainer.innerHTML = '';
+
+    jobData.forEach(job => {
+        const jobElement = document.createElement('div');
+        jobElement.classList.add('job-item');
+        jobElement.innerHTML = `
+            <h3>${job.title}</h3>
+            <p><strong>Type:</strong> ${job.type}</p>
+            <p><strong>Location:</strong> ${job.location}</p>
+            <p><strong>Industry:</strong> ${job.industry}</p>
+            <p>${job.description}</p>
+        `;
+        jobsContainer.appendChild(jobElement);
+    });
+}
+
+// Call the function to display jobs on page load
+document.addEventListener('DOMContentLoaded', displayJobs);
+
+    </script>
+</body>
+</html>
